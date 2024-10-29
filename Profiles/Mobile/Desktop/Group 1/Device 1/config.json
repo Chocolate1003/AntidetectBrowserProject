@@ -1,0 +1,78 @@
+{
+    "profiles": [
+        {
+            "profile_name": "user1",
+            "proxy": "http://proxy.example.com:8080",
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36",
+            "api_key": "YOUR_2CAPTCHA_API_KEY",
+            "device_info": {
+                "os": "Windows",
+                "browser_version": "Chrome 86",
+                "screen_resolution": "1080x1920",
+                "platform": "Linux armv8l",
+                "webgl_vendor": "Google Inc.",
+                "webgl_renderer": "ANGLE (Adreno (TM) 540)",
+                "sec_ch_ua": "\"Not_A Brand\";v=\"99\", \"Google Chrome\";v=\"86\", \"Chromium\";v=\"86\"",
+                "sec_ch_ua_mobile": "?0",
+                "sec_ch_ua_platform": "Windows"
+            },
+            "settings": {
+                "ctr_adjustment": 0.02,
+                "batch_size": 2,
+                "timezone": "America/New_York",
+                "language": "en-US",
+                "gmt_offset": -4,
+                "geolocation": {
+                    "latitude": 40.7128,
+                    "longitude": -74.0060,
+                    "accuracy": 10
+                }
+            },
+            "websites": [
+                "https://spotify.com/example",
+                "https://youtube.com/example",
+                "https://boomplay.com/example"
+            ],
+            "platforms": [
+                {
+                    "name": "Spotify",
+                    "website": "https://spotify.com/example",
+                    "selectors": {
+                        "play_button": "//button[contains(@data-testid, 'play-button')]",
+                        "pause_button": "//button[contains(@data-testid, 'pause-button')]",
+                        "next_button": "//button[contains(@data-testid, 'next-button')]",
+                        "volume_control": "//input[contains(@class, 'volume-slider')]"
+                    }
+                },
+                {
+                    "name": "YouTube",
+                    "website": "https://youtube.com/example",
+                    "selectors": {
+                        "play_button": "//button[contains(@aria-label, 'Play')]",
+                        "pause_button": "//button[contains(@aria-label, 'Pause')]",
+                        "next_button": "//a[@title='Next video']",
+                        "volume_control": "//button[contains(@class, 'ytp-mute-button')]"
+                    }
+                },
+                {
+                    "name": "Boomplay",
+                    "website": "https://boomplay.com/example",
+                    "selectors": {
+                        "play_button": "//button[contains(text(), 'Play')]",
+                        "pause_button": "//button[contains(text(), 'Pause')]",
+                        "next_button": "//button[contains(text(), 'Next')]",
+                        "volume_control": "//input[@type='range' and contains(@class, 'volume')]"
+                    }
+                }
+            ]
+        }
+    ],
+    "ad_xpaths": [
+        "//div[contains(@class, 'banner-ad')]",
+        "//video",
+        "//div[contains(@class, 'native-ad')]",
+        "//div[contains(@class, 'popup-ad')]",
+        "//div[contains(@class, 'interstitial-ad')]",
+        "//div[contains(@class, 'contextual-ad')]"
+    ]
+}
