@@ -146,5 +146,8 @@ def click_batched(profiles):
 
         driver.quit()  # Ensure the driver is closed after processing
 
+        # Short pause after processing each profile within a single batch
+        time.sleep(random.uniform(2, 5))  # Pause for 2 to 5 seconds
+
         # Sleep for a random duration between batches
-        time.sleep(random.uniform(5, 15))  # Adjust this duration to fit your needs
+        time.sleep(random.uniform(5 * 60, 15 * 60))  # Sleep for 5 to 15 minutes
