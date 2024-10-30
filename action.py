@@ -17,6 +17,12 @@ def visit_website(driver, website):
     print(f"Visiting website: {website}")
     driver.get(website)
     simulate_human_behavior(driver)
+    
+    # Randomly select a time to spend on the website (5, 7, 10, or 12 minutes)
+    time_options = [5 * 60, 7 * 60, 10 * 60, 12 * 60]  # Convert minutes to seconds
+    time_spent = random.choice(time_options)
+    print(f"Spending {time_spent // 60} minutes on the website.")
+    time.sleep(time_spent)
 
 def click_ads(driver, ad_selectors):
     for selector in ad_selectors:
@@ -140,5 +146,8 @@ def click_batched(profiles):
 
         driver.quit()  # Ensure the driver is closed after processing
 
+        # Short pause after processing each profile within a single batch
+        time.sleep(random.uniform(2, 5))  # Pause for 2 to 5 seconds
+
         # Sleep for a random duration between batches
-        time.sleep(random.uniform(5, 15))  # Adjust this duration to fit your needs
+        time.sleep(random.uniform(5 * 60, 15 * 60))  # Sleep for 5 to 15 minutes
