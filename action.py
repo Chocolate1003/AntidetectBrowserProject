@@ -119,11 +119,16 @@ def interact_with_websites(driver, websites, profile_name, config):
     load_cookies(driver, profile_name)  # Load cookies before interacting
 
     for website in websites:
-        visit_website(driver, website)
+        visit_website(driver, website['url'])  # Get the website URL
         detect_and_solve_captcha(driver, config['api_key'])  # Detect and solve CAPTCHA if needed
-        click_ads(driver, config.get('ad_xpaths', []))  # Click specified ads from config
-        record_impression(profile_name, website)  # Record the impression
+        
+        # Check if ad_xpaths key exists and is not empty before clicking ads
+        if 'ad_xpaths' in website and website['ad_xpaths']:
+            click_ads(driver, website['ad_xpaths'])  # Click specified ads from config
+        else:
+            print(f"No ad interactions needed for: {website['url']}")  # Log this information
 
+        record_impression(profile_name, website['url'])  # Record the impression
         interact_with_platforms(driver, config['platforms'])  # Stream content on platforms
         
         save_cookies(driver, profile_name)  # Save cookies after interaction
